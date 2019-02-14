@@ -1,0 +1,9 @@
+@import '../common/styles/colors.scss';
+
+:host {
+  padding: 20px;
+  width: 100%;
+  background-color: $main-light-blue;
+  display: flex;
+  flex-wrap: wrap;
+}
