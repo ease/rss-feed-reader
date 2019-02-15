@@ -6,6 +6,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError, retry, tap } from 'rxjs/operators';
+import { feedsConst } from './feeds.const';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ import { map, catchError, retry, tap } from 'rxjs/operators';
 export class FeedsService {
   constructor(private http: HttpClient) {}
 
-  getFeeds(): Observable<any> {
-    const URL = 'https://jsonplaceholder.typicode.com/posts';
+  getFeeds(url): Observable<any> {
+    const URL = feedsConst.apiUrl+`${url}`;
     // const headers: HttpHeaders = new HttpHeaders({
     //   'Content-Type': 'application/x-www-form-urlencoded'
     // });

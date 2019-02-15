@@ -1,1 +1,16 @@
 <app-post *ngFor="let post of feeds" [post]="post"></app-post>
+<!-- <cdk-virtual-scroll-viewport style="height: 500px" itemSize="5">
+  <app-post *cdkVirtualFor="let post of feeds" [post]="post"></app-post>
+</cdk-virtual-scroll-viewport> -->
+
+<!-- <cdk-virtual-scroll-viewport style="height: 500px" itemSize="5">
+  <div *cdkVirtualFor="let post of feeds">
+    <app-post [post]="post"></app-post>
+  </div>
+</cdk-virtual-scroll-viewport> -->
+
+<!-- <cdk-virtual-scroll-viewport style="height: 500px" itemSize="20">
+  <ng-container *cdkVirtualFor="let post of feeds">
+    <app-post [post]="post"></app-post>
+  </ng-container>
+</cdk-virtual-scroll-viewport> -->
