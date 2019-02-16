@@ -1,0 +1,4 @@
+{
+  "prettier.disableLanguages": ["html"],
+  "html.format.wrapAttributes": "force-aligned"
+}

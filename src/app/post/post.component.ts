@@ -7,8 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PostComponent implements OnInit {
   @Input() post: Object;
+  @Input() feed: Object;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // console.log('POST:::', this.post)
+    // console.log('FEED:::', this.feed)
+  }
 }

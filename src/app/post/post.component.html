@@ -1,5 +1,12 @@
 <div class="heading">
-  <div class="source">{{ post?.id }}</div>
-  <div class="date">Nov 19 2017</div>
+  <a href="{{post.link}}"
+     target="_blank"></a>
+  <div class="source">{{ feed?.title }}</div>
+  <div class="date">{{ post.pubDate | date: 'MMM dd yyyy | HH:mm' : 'UTC' }}</div>
 </div>
-<p>{{ post.body }}</p>
+<img src="{{ post.thumbnail }}"
+     alt="{{ post.title }} image description">
+<div class="content">
+  <h3>{{ post.title }}</h3>
+  <p>{{ post.content }}</p>
+</div>

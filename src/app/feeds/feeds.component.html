@@ -1,4 +1,6 @@
-<app-post *ngFor="let post of feeds" [post]="post"></app-post>
+<app-post *ngFor="let post of posts; let i=index"
+          [post]="post"
+          [feed]="feed"></app-post>
 <!-- <cdk-virtual-scroll-viewport style="height: 500px" itemSize="5">
   <app-post *cdkVirtualFor="let post of feeds" [post]="post"></app-post>
 </cdk-virtual-scroll-viewport> -->
