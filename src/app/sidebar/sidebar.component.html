@@ -5,4 +5,27 @@
          name="q"
          placeholder="Filter your feeds"
          aria-label="Search through site content" />
+
+  <hr>
+  <span *ngFor="let feed of feeds"></span>
+  <form [formGroup]="feedForm"
+        (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="form-name">Add new feed</label>
+      <input type="text"
+             class="form-control"
+             formControlName="name"
+             id="form-name"
+             placeholder="Type your feed name...">
+    </div>
+    <div class="form-group">
+      <input type="text"
+             class="form-control"
+             formControlName="name"
+             id="form-name"
+             placeholder="Copy your RSS url...">
+    </div>
+    <button class="submit"
+            type="submit">Add feed</button>
+  </form>
 </aside>
