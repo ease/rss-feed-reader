@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError, retry, tap } from 'rxjs/operators';
-import { feedsConst } from './feeds.const';
+import { feedsConst } from '../../feeds/feeds.const';
 
 @Injectable({
   providedIn: 'root'

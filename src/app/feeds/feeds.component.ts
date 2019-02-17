@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FeedsService } from './feeds.service';
 import { feedsConst } from './feeds.const';
+import { FeedsService } from '../common/services/feeds.service';
 
 export interface IFeedsResponse {
   status: Number;
