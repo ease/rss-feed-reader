@@ -6,8 +6,8 @@
          placeholder="Filter your feeds"
          aria-label="Search through site content" />
 
+  <div *ngFor="let feed of activeFeeds">{{feed}}</div>
   <hr>
-  <span *ngFor="let feed of feeds"></span>
   <form [formGroup]="feedForm"
         (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -21,7 +21,7 @@
     <div class="form-group">
       <input type="text"
              class="form-control"
-             formControlName="name"
+             formControlName="url"
              id="form-name"
              placeholder="Copy your RSS url...">
     </div>

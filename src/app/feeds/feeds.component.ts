@@ -11,7 +11,7 @@ export interface IFeedsResponse {
 export class FeedsResponse implements IFeedsResponse {
   status: Number;
   feed: Object;
-  items: Array<any>;
+  items: any;
 
   constructor(props: IFeedsResponse) {
     this.status = props.status;
@@ -35,7 +35,7 @@ export class FeedsComponent implements OnInit {
 
   ngOnInit() {
     const url = feedsConst.feeds[0].url;
-    this.feedsService.getFeeds(url).subscribe(res => {
+    this.feedsService.getResults$().subscribe((res: any) => {
       this.feed = res.feed;
       this.posts = res.items;
       console.log('FEEDS:::', this.feed);

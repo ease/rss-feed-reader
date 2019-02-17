@@ -8,9 +8,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  feeds: any;
+  activeFeeds: any;
   feedForm: FormGroup;
-  contactData: any;
+  formData: any;
   submitted = false;
 
   constructor(
@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     const formControls = {
       name: ['', Validators.required],
-      url: ['', Validators.required]
+      url: ['https://www.adweek.com/feed/', Validators.required]
     };
     this.feedForm = this.formBuilder.group(formControls);
   }
@@ -33,16 +33,20 @@ export class SidebarComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.feedForm.invalid) {
       return;
     }
 
-    this.contactData = {
+    this.formData = {
       name: this.f.name.value,
-      url: this.f.url.value,
+      url: this.f.url.value
     };
-    
+    this.feedsService.getFeeds(this.formData.url).subscribe(feeds => {
+      console.log('Sidebar feeds:', feeds);
+      if ((feeds.status = 200)) {
+        this.activeFeeds = new Array(...this.formData.name, 2, 3);
+        console.log('activeFeeds::', this.activeFeeds)
+      }
+    });
   }
-  addFeed() {}
 }
