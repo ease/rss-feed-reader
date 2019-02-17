@@ -9,7 +9,7 @@
 a {
   background-image: url(../../assets/icons/link.png);
   background-size: 16px;
-  height: 16px;
+  height: 14px;
   width: 16px;
   i:hover {
     cursor: pointer;
@@ -27,6 +27,9 @@ a {
   background-color: $main-gray;
   .source {
     color: #608cb2;
+  }
+  .date {
+    font-size: 12px;
   }
 }
 img {
