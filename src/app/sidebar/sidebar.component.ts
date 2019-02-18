@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedsService } from '../common/services/feeds.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FeedData } from '../common/models/FeedData';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,45 +8,26 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  activeFeeds: any;
-  feedForm: FormGroup;
-  formData: any;
+  activeFeeds: FeedData[] = [];
   submitted = false;
 
-  constructor(
-    private feedsService: FeedsService,
-    private formBuilder: FormBuilder
-  ) {}
+  constructor(private feedsService: FeedsService) {}
 
-  ngOnInit() {
-    const formControls = {
-      name: ['', Validators.required],
-      url: ['https://www.adweek.com/feed/', Validators.required]
-    };
-    this.feedForm = this.formBuilder.group(formControls);
-  }
+  ngOnInit() {}
 
-  get f() {
-    return this.feedForm.controls;
-  }
-
-  onSubmit() {
-    this.submitted = true;
-
-    if (this.feedForm.invalid) {
+  add(feedName: string, feedUrl: string) {
+    feedUrl = feedUrl.trim();
+    if (!feedUrl) {
       return;
     }
-
-    this.formData = {
-      name: this.f.name.value,
-      url: this.f.url.value
-    };
-    this.feedsService.getFeeds(this.formData.url).subscribe(feeds => {
-      console.log('Sidebar feeds:', feeds);
-      if ((feeds.status = 200)) {
-        this.activeFeeds = new Array(...this.formData.name, 2, 3);
-        console.log('activeFeeds::', this.activeFeeds)
-      }
+    this.feedsService.addFeed(feedUrl).subscribe((feed: FeedData) => {
+      // this.activeFeeds.push(feed);
+      this.activeFeeds.push(feed);
     });
+  }
+
+  delete(feed: FeedData) {
+    this.activeFeeds = this.activeFeeds.filter(f => f !== feed);
+    this.feedsService.deleteFeed(feed);
   }
 }

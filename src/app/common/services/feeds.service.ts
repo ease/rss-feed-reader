@@ -7,25 +7,34 @@ import {
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, catchError, retry, tap } from 'rxjs/operators';
 import { feedsConst } from '../../feeds/feeds.const';
+import { FeedData } from '../models/FeedData';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeedsService {
-  results = new BehaviorSubject([]);
+  feeds: FeedData[] = [];
+
+  results = new BehaviorSubject(null);
   constructor(private http: HttpClient) {}
 
-  getFeeds(url): Observable<any> {
+  getAllFeeds$() {
+    return this.results.asObservable();
+  }
+
+  addFeed(url): Observable<any> {
     const URL = feedsConst.apiUrl + `${url}`;
     return this.http.get<any>(URL).pipe(
       map((res: any) => {
-        this.results.next(res);
+        this.feeds.push(res);
+        this.results.next(this.feeds);
         return res;
       })
     );
   }
 
-  getResults$() {
-    return this.results.asObservable();
+  deleteFeed(feed: FeedData): any {
+    let filtered = this.feeds.filter(f => f !== feed);
+    this.results.next(filtered);
   }
 }

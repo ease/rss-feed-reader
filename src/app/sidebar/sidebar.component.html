@@ -1,31 +1,27 @@
 <aside>
   CONTENT GENERATOR
   <input type="search"
-         id="site-search"
-         name="q"
          placeholder="Filter your feeds"
-         aria-label="Search through site content" />
-
-  <div *ngFor="let feed of activeFeeds">{{feed}}</div>
+         aria-label="Search feeds" />
   <hr>
-  <form [formGroup]="feedForm"
-        (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="form-name">Add new feed</label>
-      <input type="text"
-             class="form-control"
-             formControlName="name"
-             id="form-name"
-             placeholder="Type your feed name...">
-    </div>
-    <div class="form-group">
-      <input type="text"
-             class="form-control"
-             formControlName="url"
-             id="form-name"
-             placeholder="Copy your RSS url...">
-    </div>
-    <button class="submit"
-            type="submit">Add feed</button>
-  </form>
+  <div>
+    <input #feedName
+           value="Testni Adweek"
+           placeholder="Type your feed name..." />
+    <input #feedUrl
+           value="https://www.adweek.com/feed/"
+           placeholder="Copy your RSS url..." />
+  </div>
+  <button (click)="add(feedName.value, feedUrl.value);">
+    Add feed
+  </button>
+
+  <ul class="active-feeds">
+    <li *ngFor="let feed of activeFeeds">
+      <span class="badge">{{feed.feed?.title}}</span>
+      <button class="delete"
+              title="delete feed"
+              (click)="delete(feed)">x</button>
+    </li>
+  </ul>
 </aside>

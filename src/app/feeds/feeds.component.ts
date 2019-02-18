@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { feedsConst } from './feeds.const';
 import { FeedsService } from '../common/services/feeds.service';
+import { FeedData } from '../common/models/FeedData';
 
 export interface IFeedsResponse {
   status: Number;
@@ -28,17 +29,27 @@ export class FeedsResponse implements IFeedsResponse {
   styleUrls: ['./feeds.component.scss']
 })
 export class FeedsComponent implements OnInit {
-  feed: any;
-  posts: any;
+  // feed: any = [];
+  posts: Array<any> = [];
 
   constructor(private feedsService: FeedsService) {}
 
   ngOnInit() {
     const url = feedsConst.feeds[0].url;
-    this.feedsService.getResults$().subscribe((res: any) => {
-      this.feed = res.feed;
-      this.posts = res.items;
-      console.log('FEEDS:::', this.feed);
+    this.feedsService.getAllFeeds$().subscribe((res: FeedData[]) => {
+      if (res) {
+        res.map((item, i) => {
+          // this.feed.push(res[i].feed);
+          res[i].items.map(post => {
+            this.posts.push(post);
+          });
+        });
+      }
+      if (res && res[0] && res[0].feed && res[0].items) {
+        // this.feed = res[0].feed;
+        this.posts = res[0].items;
+        // console.log('FEEDS:::', this.feed);
+      }
       console.log('POSTS:::', this.posts);
     });
     // this.feedsService.getFeeds(url).subscribe(res => {
