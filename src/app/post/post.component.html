@@ -1,7 +1,7 @@
 <div class="heading">
   <a href="{{post.link}}"
      target="_blank"></a>
-  <!-- <div class="source">{{ feed?.title }}</div> -->
+  <div class="source">{{ post.source }}</div>
   <span class="date">{{ post.pubDate | date: 'MMM dd yyyy | HH:mm' : 'UTC' }}</span>
 </div>
 <img *ngIf="post.thumbnail"

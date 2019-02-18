@@ -5,10 +5,6 @@ export const feedsConst = {
       url: 'https://www.adweek.com/feed/'
     },
     {
-      name: 'adweek',
-      url: 'https://www.adweek.com/feed/'
-    },
-    {
       name: 'bbctech',
       url: 'http://feeds.bbci.co.uk/news/technology/rss.xml'
     },

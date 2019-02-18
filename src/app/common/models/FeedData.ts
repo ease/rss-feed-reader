@@ -1,5 +1,7 @@
+import { Item } from './Item';
+
 export class FeedData {
-  status: number;
+  status: number | string;
   feed: Object;
-  items: Array<any>;
+  items: Item[];
 }

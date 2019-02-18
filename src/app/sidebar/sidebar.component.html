@@ -16,6 +16,18 @@
     Add feed
   </button>
 
+  <div>
+    <input #feedName2
+           value="The Guardian"
+           placeholder="Type your feed name..." />
+    <input #feedUrl2
+           value="https://www.theguardian.com/technology/internet/rss"
+           placeholder="Copy your RSS url..." />
+  </div>
+  <button (click)="add(feedName2.value, feedUrl2.value);">
+    Add Guardian
+  </button>
+
   <ul class="active-feeds">
     <li *ngFor="let feed of activeFeeds">
       <span class="badge">{{feed.feed?.title}}</span>
