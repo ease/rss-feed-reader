@@ -19,17 +19,18 @@ export class FeedsComponent implements OnInit {
   ngOnInit() {
     this.feedsService.getAllFeeds$().subscribe((feeds: FeedData[]) => {
       if (feeds) {
+        this.feeds = feeds;
         feeds.map(feed => {
           debugger;
           feed = new FeedResponse(feed);
-          if (!this.feeds.includes(feed)) {
-            this.feeds.push(feed);
-          }
-          console.log('this.feeds:::', this.feeds);
-
+          // if (!this.feeds.includes(feed)) {
+          //   this.feeds.push(feed);
+          // }
+          
           feed.items.map(item => {
             this.posts.push(item);
           });
+          console.log('this.feeds:::', this.feeds);
           console.log('this.posts:::', this.posts);
         });
       }

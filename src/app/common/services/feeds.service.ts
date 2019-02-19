@@ -15,26 +15,32 @@ import { FeedData } from '../models/FeedData';
 export class FeedsService {
   feeds: FeedData[] = [];
 
-  results = new BehaviorSubject(null);
+  feedsResults = new BehaviorSubject(null);
+  postsResults = new BehaviorSubject(null);
   constructor(private http: HttpClient) {}
 
   getAllFeeds$() {
-    return this.results.asObservable();
+    return this.feedsResults.asObservable();
+  }
+
+  getAllPosts$() {
+    return this.postsResults.asObservable();
   }
 
   addFeed(url): Observable<any> {
     const URL = feedsConst.apiUrl + `${url}`;
     return this.http.get<any>(URL).pipe(
       map((res: any) => {
+        debugger;
         this.feeds.push(res);
-        this.results.next(this.feeds);
+        this.feedsResults.next(this.feeds);
         return res;
       })
     );
   }
 
   deleteFeed(feed: FeedData): any {
-    let filtered = this.feeds.filter(f => f !== feed);
-    this.results.next(filtered);
+    this.feeds = this.feeds.filter(f => f !== feed);
+    this.feedsResults.next(this.feeds);
   }
 }

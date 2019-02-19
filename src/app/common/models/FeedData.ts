@@ -2,6 +2,6 @@ import { Item } from './Item';
 
 export class FeedData {
   status: number | string;
-  feed: Object;
+  feed: any;
   items: Item[];
 }

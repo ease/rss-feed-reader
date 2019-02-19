@@ -13,7 +13,13 @@ export class SidebarComponent implements OnInit {
 
   constructor(private feedsService: FeedsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.feedsService.getAllFeeds$().subscribe((feeds: any) => {
+      if (feeds) {
+        this.activeFeeds = feeds;
+      }
+    });
+  }
 
   add(feedName: string, feedUrl: string) {
     feedUrl = feedUrl.trim();
@@ -22,7 +28,6 @@ export class SidebarComponent implements OnInit {
     }
     this.feedsService.addFeed(feedUrl).subscribe((feed: FeedData) => {
       // this.activeFeeds.push(feed);
-      this.activeFeeds.push(feed);
     });
   }
 
