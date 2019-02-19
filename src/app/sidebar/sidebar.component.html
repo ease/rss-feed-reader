@@ -1,8 +1,18 @@
 <aside>
-  CONTENT GENERATOR
+  <h2>CONTENT GENERATOR</h2>
   <input type="search"
+         #searchField
          placeholder="Filter your feeds"
          aria-label="Search feeds" />
+
+  <ul class="active-feeds">
+    <li *ngFor="let feed of activeFeeds">
+      <span class="title">{{feed.feed?.title}}</span>
+      <button class="delete"
+              title="delete feed"
+              (click)="delete(feed)">x</button>
+    </li>
+  </ul>
   <hr>
   <div>
     <input #feedName
@@ -28,12 +38,4 @@
     Add Guardian
   </button>
 
-  <ul class="active-feeds">
-    <li *ngFor="let feed of activeFeeds">
-      <span class="badge">{{feed.feed?.title}}</span>
-      <button class="delete"
-              title="delete feed"
-              (click)="delete(feed)">x</button>
-    </li>
-  </ul>
 </aside>
