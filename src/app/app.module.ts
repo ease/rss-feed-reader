@@ -9,6 +9,7 @@ import { FeedsComponent } from './feeds/feeds.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SearchFeedNamePipe } from './search-feed-name.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     SidebarComponent,
     PostComponent,
     FeedsComponent,
-    HomeComponent
+    HomeComponent,
+    SearchFeedNamePipe
   ],
   imports: [
     BrowserModule,
