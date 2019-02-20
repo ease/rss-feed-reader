@@ -20,19 +20,14 @@ export class FeedsComponent implements OnInit {
     this.feedsService.getAllFeeds$().subscribe((feeds: FeedData[]) => {
       if (feeds) {
         this.feeds = feeds;
-        feeds.map(feed => {
-          debugger;
-          feed = new FeedResponse(feed);
-          // if (!this.feeds.includes(feed)) {
-          //   this.feeds.push(feed);
-          // }
-          
-          feed.items.map(item => {
-            this.posts.push(item);
-          });
-          console.log('this.feeds:::', this.feeds);
-          console.log('this.posts:::', this.posts);
-        });
+        console.log('this.feeds:::', this.feeds);
+      }
+    });
+
+    this.feedsService.getAllPosts$().subscribe((posts: any) => {
+      if (posts) {
+        this.posts = posts;
+        console.log('this.posts:::', this.posts);
       }
     });
   }
