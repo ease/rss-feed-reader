@@ -14,19 +14,22 @@
     </li>
   </ul>
   <hr>
-  <div>
+  <div class="add-container">
+    <label for="feedName">Add a new feed</label>
     <input #feedName
            value="Testni Adweek"
+           name="feedName"
            placeholder="Type your feed name..." />
     <input #feedUrl
            value="https://www.adweek.com/feed/"
            placeholder="Copy your RSS url..." />
   </div>
-  <button (click)="add(feedName.value, feedUrl.value);">
+  <button (click)="add(feedName.value, feedUrl.value);"
+          class="add-feed">
     Add feed
   </button>
 
-  <div>
+  <!-- <div>
     <input #feedName2
            value="The Guardian"
            placeholder="Type your feed name..." />
@@ -36,6 +39,6 @@
   </div>
   <button (click)="add(feedName2.value, feedUrl2.value);">
     Add Guardian
-  </button>
+  </button> -->
 
 </aside>

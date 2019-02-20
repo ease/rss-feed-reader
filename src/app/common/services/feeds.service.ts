@@ -41,6 +41,8 @@ export class FeedsService {
         });
         this.feedsResults.next(this.feeds);
         this.postsResults.next(this.posts);
+
+        // localStorage.setItem('feeds', JSON.stringify(this.feeds));
       })
     );
   }
@@ -59,5 +61,7 @@ export class FeedsService {
 
     this.feedsResults.next(this.feeds);
     this.postsResults.next(this.posts);
+
+    // localStorage.setItem('feeds', JSON.stringify(this.feeds));
   }
 }
