@@ -26,9 +26,7 @@ export class SidebarComponent implements OnInit {
     if (!feedUrl) {
       return;
     }
-    this.feedsService.addFeed(feedUrl).subscribe((feed: FeedData) => {
-      // this.activeFeeds.push(feed);
-    });
+    this.feedsService.addFeed(feedUrl).subscribe();
   }
 
   delete(feed: FeedData) {

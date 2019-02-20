@@ -23,11 +23,11 @@ export class FeedsService {
   constructor(private http: HttpClient) {}
 
   getAllFeeds$() {
-    return this.feedsResults.asObservable();
+    return this.feedsResults;
   }
 
   getAllPosts$() {
-    return this.postsResults.asObservable();
+    return this.postsResults;
   }
 
   addFeed(url): Observable<any> {
