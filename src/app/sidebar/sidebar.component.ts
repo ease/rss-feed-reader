@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
     // if (localStorage.getItem('feeds')) {
     //   this.activeFeeds = JSON.parse(localStorage.getItem('feeds'));
     // }
-    this.feedsService.getAllFeeds$().subscribe((feeds: any) => {
+    this.feedsService.getAllFeeds$().subscribe((feeds: FeedData[]) => {
       if (feeds) {
         this.activeFeeds = feeds;
       }

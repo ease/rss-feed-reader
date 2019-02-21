@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpResponse,
-  HttpErrorResponse
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
-import { map, catchError, retry, tap } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { feedsConst } from '../../feeds/feeds.const';
 import { FeedData } from '../models/FeedData';
 import { FeedResponse } from '../responses/FeedResponse';
+import { Item } from '../models/Item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeedsService {
   feeds: FeedData[] = [];
-  posts: any = [];
-  filtered: any = [];
+  posts: Item[] = [];
 
   feedsResults = new BehaviorSubject(null);
   postsResults = new BehaviorSubject(null);
@@ -30,10 +26,10 @@ export class FeedsService {
     return this.postsResults;
   }
 
-  addFeed(url): Observable<any> {
+  addFeed(url: string): Observable<any> {
     const URL = feedsConst.apiUrl + `${url}`;
     return this.http.get<any>(URL).pipe(
-      map((res: any) => {
+      map((res: FeedData) => {
         let isAdded =
           this.feeds.length > 0 &&
           this.feeds.every(oldFeed => oldFeed.feed.title === res.feed.title);
@@ -41,7 +37,7 @@ export class FeedsService {
         if (!isAdded) {
           this.feeds.push(res);
           res = new FeedResponse(res);
-          res.items.map(item => {
+          res.items.map((item: Item) => {
             this.posts.push(item);
           });
           this.feedsResults.next(this.feeds);
@@ -59,7 +55,7 @@ export class FeedsService {
     );
   }
 
-  deleteFeed(feed: FeedData): any {
+  deleteFeed(feed: FeedData): void {
     this.feeds = this.feeds.filter(f => f !== feed);
     if (this.feeds.length === 0) {
       this.posts = [];
