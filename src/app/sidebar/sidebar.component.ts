@@ -10,6 +10,7 @@ import { FeedData } from '../common/models/FeedData';
 export class SidebarComponent implements OnInit {
   activeFeeds: FeedData[] = [];
   submitted = false;
+  active = false;
 
   constructor(private feedsService: FeedsService) {}
 
