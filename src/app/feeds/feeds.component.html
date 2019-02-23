@@ -1,7 +1,7 @@
 <div class="message">
   <h1 *ngIf="!posts.length">Please add some feeds</h1>
 </div>
-<app-post *ngFor="let post of posts | async"
+<app-post *ngFor="let post of posts"
           [post]="post"></app-post>
 <!-- <cdk-virtual-scroll-viewport itemSize="5">
   <app-post *cdkVirtualFor="let post of posts" [post]="post"></app-post>
