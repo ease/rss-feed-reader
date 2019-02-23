@@ -1,44 +1,56 @@
 <aside>
-  <h2>CONTENT GENERATOR</h2>
-  <input type="search"
-         #searchField
-         placeholder="Filter your feeds"
-         aria-label="Search feeds" />
+  <!-- Sidebar -->
+  <div class="sidebar"
+       [ngClass]="{'active': active}">
 
-  <ul class="active-feeds">
-    <li *ngFor="let feed of activeFeeds">
-      <span class="title">{{feed.feed?.title}}</span>
-      <button class="delete"
-              title="delete feed"
-              (click)="delete(feed)">x</button>
-    </li>
-  </ul>
-  <hr>
-  <div class="add-container">
-    <label for="feedName">Add a new feed</label>
-    <input #feedName
-           value="Testni Adweek"
-           name="feedName"
-           placeholder="Type your feed name..." />
-    <input #feedUrl
-           value="https://www.adweek.com/feed/"
-           placeholder="Copy your RSS url..." />
+    <div class="dismiss"
+         (click)="active = false">
+      <span>X</span>
+    </div>
+
+    <div class="sidebar-header">
+    </div>
+
+    <h2>CONTENT GENERATOR</h2>
+    <input type="search"
+           #searchField
+           placeholder="Filter your feeds"
+           aria-label="Search feeds" />
+
+    <ul class="active-feeds">
+      <li *ngFor="let feed of activeFeeds">
+        <span class="title">{{feed.feed?.title}}</span>
+        <button class="delete"
+                title="delete feed"
+                (click)="delete(feed)">x</button>
+      </li>
+    </ul>
+    <hr>
+    <div class="add-container">
+      <label for="feedName">Add a new feed</label>
+      <input #feedName
+             value="Testni Adweek"
+             name="feedName"
+             placeholder="Type your feed name..." />
+      <input #feedUrl
+             value="https://www.adweek.com/feed/"
+             placeholder="Copy your RSS url..." />
+    </div>
+    <button (click)="add(feedName.value, feedUrl.value);"
+            class="add-feed">
+      Add feed
+    </button>
   </div>
-  <button (click)="add(feedName.value, feedUrl.value);"
-          class="add-feed">
-    Add feed
-  </button>
 
-  <!-- <div>
-    <input #feedName2
-           value="The Guardian"
-           placeholder="Type your feed name..." />
-    <input #feedUrl2
-           value="https://www.theguardian.com/technology/internet/rss"
-           placeholder="Copy your RSS url..." />
+  <!-- Page Content -->
+  <div class="content">
+    <nav>
+      <div class="hamburger-box"
+           (click)="active = !active">
+        <div class="hamburger-inner"></div>
+      </div>
+    </nav>
   </div>
-  <button (click)="add(feedName2.value, feedUrl2.value);">
-    Add Guardian
-  </button> -->
-
+  <!-- Dark Overlay element -->
+  <div class="overlay"></div>
 </aside>
