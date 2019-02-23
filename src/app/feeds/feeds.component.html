@@ -1,17 +1,19 @@
-<app-post *ngFor="let post of posts; let i=index;"
+<div class="message">
+  <h1 *ngIf="!posts.length">Please add some feeds</h1>
+</div>
+<app-post *ngFor="let post of posts | async"
           [post]="post"></app-post>
-<!-- <cdk-virtual-scroll-viewport style="height: 500px" itemSize="5">
-  <app-post *cdkVirtualFor="let post of feeds" [post]="post"></app-post>
+<!-- <cdk-virtual-scroll-viewport itemSize="5">
+  <app-post *cdkVirtualFor="let post of posts" [post]="post"></app-post>
 </cdk-virtual-scroll-viewport> -->
 
-<!-- <cdk-virtual-scroll-viewport style="height: 500px" itemSize="5">
-  <div *cdkVirtualFor="let post of feeds">
+<!-- <cdk-virtual-scroll-viewport itemSize="5">
+  <div *cdkVirtualFor="let post of posts">
     <app-post [post]="post"></app-post>
   </div>
 </cdk-virtual-scroll-viewport> -->
-
-<!-- <cdk-virtual-scroll-viewport style="height: 500px" itemSize="20">
-  <ng-container *cdkVirtualFor="let post of feeds">
+<!-- <cdk-virtual-scroll-viewport itemSize="5">
+  <ng-container *cdkVirtualFor="let post of posts | async">
     <app-post [post]="post"></app-post>
   </ng-container>
 </cdk-virtual-scroll-viewport> -->
