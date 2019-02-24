@@ -75,3 +75,8 @@
        [ngClass]="{active: active}"
        (click)="active = false"></div>
 </aside>
+
+
+<div class="toast"
+     *ngIf="warningMessage"
+     [ngClass]="{show: showAlreadyExist}">{{warningMessage}}</div>

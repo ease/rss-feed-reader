@@ -12,6 +12,9 @@ export class SidebarComponent implements OnInit {
   submitted = false;
   active = false;
 
+  showAlreadyExist = false;
+  warningMessage: string;
+
   constructor(private feedsService: FeedsService) {}
 
   ngOnInit() {
@@ -30,7 +33,15 @@ export class SidebarComponent implements OnInit {
     if (!feedUrl) {
       return;
     }
-    this.feedsService.addFeed(feedUrl).subscribe();
+    this.feedsService.addFeed(feedUrl).subscribe(res => {
+      if (res && res.code === 1000) {
+        this.showAlreadyExist = true;
+        this.warningMessage = res.message && res.message;
+        setTimeout(() => {
+          this.showAlreadyExist = false;
+        }, 5000);
+      }
+    });
   }
 
   delete(feed: Feed) {

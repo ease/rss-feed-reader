@@ -39,16 +39,6 @@ aside {
     }
   }
 
-  @media only screen and (min-width: 768px) {
-    .sidebar {
-      left: 0;
-    }
-    .dismiss,
-    .header {
-      display: none;
-    }
-  }
-
   .overlay {
     display: none;
     position: fixed;
@@ -57,7 +47,6 @@ aside {
     background: rgba(0, 0, 0, 0.7);
     z-index: 998;
     opacity: 0;
-    transition: all 0.5s ease-in-out;
     &.active {
       display: block;
       opacity: 1;
@@ -112,6 +101,24 @@ aside {
     &:hover {
       background: #fff;
       color: #383d41;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .dismiss,
+  .header {
+    display: none;
+  }
+  aside {
+    .sidebar {
+      left: 0;
+    }
+    .overlay {
+      &.active {
+        display: none;
+        opacity: 0;
+      }
     }
   }
 }
@@ -192,4 +199,46 @@ h2 {
   background-color: #59abe5;
   color: #fff;
   cursor: pointer;
+}
+
+//toast message
+.toast {
+  visibility: hidden;
+  position: fixed;
+  z-index: 1001;
+  top: 30px;
+  right: 30px;
+  min-width: 250px;
+  background-color: #f89406;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  animation: fadeout 0.5s;
+  &.show {
+    visibility: visible;
+    animation: fadein 0.5s;
+  }
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 30px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
 }

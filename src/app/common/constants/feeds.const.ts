@@ -26,5 +26,11 @@ export const feedsConst = {
     // }
   ],
   apiUrl: 'https://api.rss2json.com/v1/api.json?rss_url=',
-  apiKey: '4icebxnoipdjztcrzinipyvhiy4yppc739oa1kef'
+  apiKey: '4icebxnoipdjztcrzinipyvhiy4yppc739oa1kef',
+  clientErrors: {
+    feedExists: {
+      message: 'Feed already exists',
+      code: 1000
+    }
+  }
 };

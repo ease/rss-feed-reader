@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { feedsConst } from '../../feeds/feeds.const';
+import { feedsConst } from '../constants/feeds.const';
 import { Feed } from '../models/Feed';
 import { FeedResponse } from '../responses/FeedResponse';
 import { Article } from '../models/Article';
@@ -45,7 +45,7 @@ export class FeedsService {
           this.feedsResults.next(this.feeds);
           this.articleResults.next(this.articles);
         } else {
-          console.warn('Feed already exists');
+          return feedsConst.clientErrors.feedExists;
         }
 
         // localStorage.setItem('feeds', JSON.stringify(this.feeds));
