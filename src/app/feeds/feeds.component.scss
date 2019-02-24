@@ -6,6 +6,7 @@
   background-color: $main-light-blue;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 60px;
   .cdk-virtual-scroll-content-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -19,8 +20,8 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   :host {
-    margin-top: 60px;
+    margin-top: 0;
   }
 }
