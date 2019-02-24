@@ -18,3 +18,9 @@
     color: #000;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  :host {
+    margin-top: 60px;
+  }
+}
