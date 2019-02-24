@@ -68,7 +68,9 @@ export class FeedsService {
     } else {
       this.feeds.map(feed => {
         feed.items.map(item => {
-          this.articles = this.articles.filter(article => article.guid !== item.guid);
+          this.articles = this.articles.filter(
+            article => article.guid !== item.guid
+          );
         });
       });
     }
@@ -82,7 +84,8 @@ export class FeedsService {
   sortArticles(articles: Article[]) {
     return articles.sort(
       (article1, article2) =>
-        new Date(article2.pubDate).getTime() - new Date(article1.pubDate).getTime()
+        new Date(article2.pubDate).getTime() -
+        new Date(article1.pubDate).getTime()
     );
   }
 }
