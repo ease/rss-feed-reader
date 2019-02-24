@@ -18,9 +18,12 @@ export class SidebarComponent implements OnInit {
   constructor(private feedsService: FeedsService) {}
 
   ngOnInit() {
-    // if (localStorage.getItem('feeds')) {
-    //   this.activeFeeds = JSON.parse(localStorage.getItem('feeds'));
-    // }
+    if (localStorage.getItem('feeds')) {
+      this.activeFeeds = JSON.parse(localStorage.getItem('feeds'));
+      this.activeFeeds.map((feed: Feed) =>{
+        this.add(undefined, feed.feed.url);
+      })
+    }
     this.feedsService.getAllFeeds$().subscribe((feeds: Feed[]) => {
       if (feeds) {
         this.activeFeeds = feeds;

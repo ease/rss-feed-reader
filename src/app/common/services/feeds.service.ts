@@ -48,7 +48,7 @@ export class FeedsService {
           return feedsConst.clientErrors.feedExists;
         }
 
-        // localStorage.setItem('feeds', JSON.stringify(this.feeds));
+        localStorage.setItem('feeds', JSON.stringify(this.feeds));
       }),
       catchError((err: HttpErrorResponse) => {
         console.error('Add feed error:', err.error.message);
@@ -74,7 +74,7 @@ export class FeedsService {
     this.feedsResults.next(this.feeds);
     this.articleResults.next(this.articles);
 
-    // localStorage.setItem('feeds', JSON.stringify(this.feeds));
+    localStorage.setItem('feeds', JSON.stringify(this.feeds));
   }
 
   sortArticles(articles: Article[]) {
