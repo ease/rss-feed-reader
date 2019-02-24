@@ -71,5 +71,7 @@
     </nav>
   </div>
   <!-- Dark Overlay element -->
-  <div class="overlay"></div>
+  <div class="overlay"
+       [ngClass]="{active: active}"
+       (click)="active = false"></div>
 </aside>
