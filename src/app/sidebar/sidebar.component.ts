@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedsService } from '../common/services/feeds.service';
-import { FeedData } from '../common/models/FeedData';
+import { Feed } from '../common/models/Feed';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +8,7 @@ import { FeedData } from '../common/models/FeedData';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  activeFeeds: FeedData[] = [];
+  activeFeeds: Feed[] = [];
   submitted = false;
   active = false;
 
@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
     // if (localStorage.getItem('feeds')) {
     //   this.activeFeeds = JSON.parse(localStorage.getItem('feeds'));
     // }
-    this.feedsService.getAllFeeds$().subscribe((feeds: FeedData[]) => {
+    this.feedsService.getAllFeeds$().subscribe((feeds: Feed[]) => {
       if (feeds) {
         this.activeFeeds = feeds;
       }
@@ -33,7 +33,7 @@ export class SidebarComponent implements OnInit {
     this.feedsService.addFeed(feedUrl).subscribe();
   }
 
-  delete(feed: FeedData) {
+  delete(feed: Feed) {
     this.activeFeeds = this.activeFeeds.filter(f => f !== feed);
     debugger
     this.feedsService.deleteFeed(feed);

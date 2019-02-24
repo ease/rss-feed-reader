@@ -1,20 +1,20 @@
 <div class="message"
-     *ngIf="!posts.length">
+     *ngIf="!articles.length">
   <h1>Please add some feeds</h1>
 </div>
-<app-post *ngFor="let post of posts"
-          [post]="post"></app-post>
+<app-article *ngFor="let article of articles"
+          [article]="article"></app-article>
 <!-- <cdk-virtual-scroll-viewport itemSize="5">
-  <app-post *cdkVirtualFor="let post of posts" [post]="post"></app-post>
+  <app-article *cdkVirtualFor="let article of articles" [article]="article"></app-article>
 </cdk-virtual-scroll-viewport> -->
 
 <!-- <cdk-virtual-scroll-viewport itemSize="5">
-  <div *cdkVirtualFor="let post of posts">
-    <app-post [post]="post"></app-post>
+  <div *cdkVirtualFor="let article of articles">
+    <app-article [article]="article"></app-article>
   </div>
 </cdk-virtual-scroll-viewport> -->
 <!-- <cdk-virtual-scroll-viewport itemSize="5">
-  <ng-container *cdkVirtualFor="let post of posts | async">
-    <app-post [post]="post"></app-post>
+  <ng-container *cdkVirtualFor="let article of articles | async">
+    <app-article [article]="article"></app-article>
   </ng-container>
 </cdk-virtual-scroll-viewport> -->

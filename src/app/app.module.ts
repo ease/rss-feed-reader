@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { PostComponent } from './post/post.component';
+import { ArticleComponent } from './article/article.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,7 +15,7 @@ import { SearchFeedNamePipe } from './search-feed-name.pipe';
   declarations: [
     AppComponent,
     SidebarComponent,
-    PostComponent,
+    ArticleComponent,
     FeedsComponent,
     HomeComponent,
     SearchFeedNamePipe

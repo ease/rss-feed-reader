@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedsService } from '../common/services/feeds.service';
-import { FeedData } from '../common/models/FeedData';
-import { Item } from '../common/models/Item';
+import { Feed } from '../common/models/Feed';
+import { Article } from '../common/models/Article';
 
 @Component({
   selector: 'app-feeds',
@@ -9,23 +9,23 @@ import { Item } from '../common/models/Item';
   styleUrls: ['./feeds.component.scss']
 })
 export class FeedsComponent implements OnInit {
-  posts: Item[] = [];
-  feeds: FeedData[] = [];
+  articles: Article[] = [];
+  feeds: Feed[] = [];
 
   constructor(private feedsService: FeedsService) {}
 
   ngOnInit() {
-    this.feedsService.getAllFeeds$().subscribe((feeds: FeedData[]) => {
+    this.feedsService.getAllFeeds$().subscribe((feeds: Feed[]) => {
       if (feeds) {
         this.feeds = feeds;
         console.log('this.feeds:::', this.feeds);
       }
     });
 
-    this.feedsService.getAllPosts$().subscribe((posts: Item[]) => {
-      if (posts) {
-        this.posts = posts;
-        console.log('this.posts:::', this.posts);
+    this.feedsService.getAllArticles$().subscribe((articles: Article[]) => {
+      if (articles) {
+        this.articles = articles;
+        console.log('this.articles:::', this.articles);
       }
     });
   }

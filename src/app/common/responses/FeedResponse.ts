@@ -1,4 +1,4 @@
-import { Item } from '../models/Item';
+import { Article } from '../models/Article';
 
 export interface IFeedResponse {
   status: number | string;
@@ -15,7 +15,7 @@ export class FeedResponse implements IFeedResponse {
     this.status = props.status;
     this.feed = props.feed;
     this.items = props.items.map(item => {
-      return new Item(item, props.feed);
+      return new Article(item, props.feed);
     });
   }
 }

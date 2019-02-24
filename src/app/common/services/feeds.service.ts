@@ -7,27 +7,27 @@ import {
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { feedsConst } from '../../feeds/feeds.const';
-import { FeedData } from '../models/FeedData';
+import { Feed } from '../models/Feed';
 import { FeedResponse } from '../responses/FeedResponse';
-import { Item } from '../models/Item';
+import { Article } from '../models/Article';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeedsService {
-  feeds: FeedData[] = [];
-  posts: Item[] = [];
+  feeds: Feed[] = [];
+  articles: Article[] = [];
 
   feedsResults = new BehaviorSubject(null);
-  postsResults = new BehaviorSubject(null);
+  articleResults = new BehaviorSubject(null);
   constructor(private http: HttpClient) {}
 
   getAllFeeds$() {
     return this.feedsResults;
   }
 
-  getAllPosts$() {
-    return this.postsResults;
+  getAllArticles$() {
+    return this.articleResults;
   }
 
   addFeed(url: string): Observable<any> {
@@ -35,19 +35,19 @@ export class FeedsService {
     const URL =
       feedsConst.apiUrl + `${url}` + `&api_key=${apiKey}` + '&order_by=pubDate';
     return this.http.get<any>(URL).pipe(
-      map((res: FeedData) => {
+      map((res: Feed) => {
         let isAdded =
           this.feeds.length > 0 &&
           this.feeds.find(oldFeed => oldFeed.feed.title === res.feed.title);
         if (!isAdded) {
           this.feeds.push(res);
           res = new FeedResponse(res);
-          res.items.map((item: Item) => {
-            this.posts.push(item);
+          res.items.map((item: Article) => {
+            this.articles.push(item);
           });
-          this.posts = this.sortPosts(this.posts);
+          this.articles = this.sortArticles(this.articles);
           this.feedsResults.next(this.feeds);
-          this.postsResults.next(this.posts);
+          this.articleResults.next(this.articles);
         } else {
           console.warn('Feed already exists');
         }
@@ -61,28 +61,28 @@ export class FeedsService {
     );
   }
 
-  deleteFeed(feed: FeedData): void {
+  deleteFeed(feed: Feed): void {
     this.feeds = this.feeds.filter(f => f !== feed);
     if (this.feeds.length === 0) {
-      this.posts = [];
+      this.articles = [];
     } else {
       this.feeds.map(feed => {
         feed.items.map(item => {
-          this.posts = this.posts.filter(post => post.guid !== item.guid);
+          this.articles = this.articles.filter(article => article.guid !== item.guid);
         });
       });
     }
 
     this.feedsResults.next(this.feeds);
-    this.postsResults.next(this.posts);
+    this.articleResults.next(this.articles);
 
     // localStorage.setItem('feeds', JSON.stringify(this.feeds));
   }
 
-  sortPosts(posts: Item[]) {
-    return posts.sort(
-      (post1, post2) =>
-        new Date(post2.pubDate).getTime() - new Date(post1.pubDate).getTime()
+  sortArticles(articles: Article[]) {
+    return articles.sort(
+      (article1, article2) =>
+        new Date(article2.pubDate).getTime() - new Date(article1.pubDate).getTime()
     );
   }
 }
