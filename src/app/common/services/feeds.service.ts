@@ -45,10 +45,11 @@ export class FeedsService {
           res.items.map((item: Item) => {
             this.posts.push(item);
           });
+          this.posts = this.sortPosts(this.posts);
           this.feedsResults.next(this.feeds);
           this.postsResults.next(this.posts);
         } else {
-          console.log('Feed already exists');
+          console.warn('Feed already exists');
         }
 
         // localStorage.setItem('feeds', JSON.stringify(this.feeds));
@@ -76,5 +77,12 @@ export class FeedsService {
     this.postsResults.next(this.posts);
 
     // localStorage.setItem('feeds', JSON.stringify(this.feeds));
+  }
+
+  sortPosts(posts: Item[]) {
+    return posts.sort(
+      (post1, post2) =>
+        new Date(post2.pubDate).getTime() - new Date(post1.pubDate).getTime()
+    );
   }
 }
