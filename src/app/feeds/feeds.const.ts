@@ -25,5 +25,6 @@ export const feedsConst = {
     //   url: 'https://www.thetelegraphandargus.co.uk/news/rss/'
     // }
   ],
-  apiUrl: 'https://api.rss2json.com/v1/api.json?rss_url='
+  apiUrl: 'https://api.rss2json.com/v1/api.json?rss_url=',
+  apiKey: '4icebxnoipdjztcrzinipyvhiy4yppc739oa1kef'
 };

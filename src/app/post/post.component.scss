@@ -1,6 +1,7 @@
 @import '../common/styles/colors.scss';
 
 :host {
+  width: 300px;
   flex-basis: 300px;
   flex-grow: 1;
   background-color: #fff;
@@ -29,6 +30,8 @@ a {
   background-color: $main-gray;
   .source {
     color: #608cb2;
+    margin-right: auto;
+    margin-left: 10px;
   }
   .date {
     font-size: 12px;

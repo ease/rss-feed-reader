@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders
+} from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { feedsConst } from '../../feeds/feeds.const';
@@ -27,7 +31,9 @@ export class FeedsService {
   }
 
   addFeed(url: string): Observable<any> {
-    const URL = feedsConst.apiUrl + `${url}`;
+    const apiKey = feedsConst.apiKey;
+    const URL =
+      feedsConst.apiUrl + `${url}` + `&api_key=${apiKey}` + '&order_by=pubDate';
     return this.http.get<any>(URL).pipe(
       map((res: FeedData) => {
         let isAdded =
