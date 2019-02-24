@@ -33,7 +33,6 @@ export class FeedsService {
         let isAdded =
           this.feeds.length > 0 &&
           this.feeds.every(oldFeed => oldFeed.feed.title === res.feed.title);
-        debugger;
         if (!isAdded) {
           this.feeds.push(res);
           res = new FeedResponse(res);

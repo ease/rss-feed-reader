@@ -6,4 +6,15 @@
   background-color: $main-light-blue;
   display: flex;
   flex-wrap: wrap;
+  .cdk-virtual-scroll-content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  cdk-virtual-scroll-viewport {
+    height: 100%;
+  }
+  h1 {
+    color: #000;
+  }
 }

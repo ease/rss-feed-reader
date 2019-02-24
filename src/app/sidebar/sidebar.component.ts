@@ -35,6 +35,7 @@ export class SidebarComponent implements OnInit {
 
   delete(feed: FeedData) {
     this.activeFeeds = this.activeFeeds.filter(f => f !== feed);
+    debugger
     this.feedsService.deleteFeed(feed);
   }
 }
