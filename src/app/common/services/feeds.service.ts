@@ -32,7 +32,7 @@ export class FeedsService {
       map((res: FeedData) => {
         let isAdded =
           this.feeds.length > 0 &&
-          this.feeds.every(oldFeed => oldFeed.feed.title === res.feed.title);
+          this.feeds.find(oldFeed => oldFeed.feed.title === res.feed.title);
         if (!isAdded) {
           this.feeds.push(res);
           res = new FeedResponse(res);
