@@ -19,6 +19,15 @@
   }
 }
 
+.message {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
 @media only screen and (min-width: 768px) {
   :host {
     margin-top: 0;

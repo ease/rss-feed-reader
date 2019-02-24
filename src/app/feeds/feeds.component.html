@@ -1,5 +1,6 @@
-<div class="message">
-  <h1 *ngIf="!posts.length">Please add some feeds</h1>
+<div class="message"
+     *ngIf="!posts.length">
+  <h1>Please add some feeds</h1>
 </div>
 <app-post *ngFor="let post of posts"
           [post]="post"></app-post>
