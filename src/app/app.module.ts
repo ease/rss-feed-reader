@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SearchFeedNamePipe } from './search-feed-name.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,14 @@ import { SearchFeedNamePipe } from './search-feed-name.pipe';
     ArticleComponent,
     FeedsComponent,
     HomeComponent,
-    SearchFeedNamePipe
+    SearchFeedNamePipe    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ScrollingModule
+    ScrollingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

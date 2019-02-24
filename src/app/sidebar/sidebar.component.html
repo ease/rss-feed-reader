@@ -17,11 +17,12 @@
     <h2>CONTENT GENERATOR</h2>
     <input type="search"
            #searchField
+           [(ngModel)]="searchText"
            placeholder="Filter your feeds"
            aria-label="Search feeds" />
 
     <ul class="active-feeds">
-      <li *ngFor="let feed of activeFeeds">
+      <li *ngFor="let feed of activeFeeds | searchFeedName: searchText">
         <span class="title">{{feed.feed?.title}}</span>
         <button class="delete"
                 title="delete feed"
