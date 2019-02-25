@@ -33,7 +33,7 @@
     <div class="add-container">
       <label for="feedName">Add a new feed</label>
       <input #feedName
-             value="Testni Adweek"
+             value="Test Adweek"
              name="feedName"
              aria-label="Type your feed name"
              placeholder="Type your feed name..." />
@@ -46,27 +46,8 @@
             class="add-feed">
       Add feed
     </button>
-
-
-    <div class="add-container">
-      <label for="feedName">Add Web</label>
-      <input #feedName2
-             value="BBC Tech"
-             name="feedName2"
-             aria-label="Type your feed name"
-             placeholder="Type your feed name..." />
-      <input #feedUrl2
-             value="http://feeds.bbci.co.uk/news/technology/rss.xml"
-             aria-label="Copy your RSS url"
-             placeholder="Copy your RSS url..." />
-    </div>
-    <button (click)="add(feedName2.value, feedUrl2.value);"
-            class="add-feed">
-      Add feed
-    </button>
   </div>
 
-  <!-- Page Content -->
   <div class="content">
     <nav>
       <div class="hamburger-box"
