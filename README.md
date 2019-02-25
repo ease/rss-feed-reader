@@ -3,9 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.6.
 Application meets PWA standards (includes service workers...):
 
-```
-![Chrome Audit results](https://github.com/ease/rss-feed-reader/blob/master/pwa-rss-feed-reader.PNG)
-```
+![Chrome Audit results](pwa-rss-feed-reader.PNG)
 
 ## Development server
 
