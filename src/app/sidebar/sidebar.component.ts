@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
 
   showAlreadyExist = false;
   warningMessage: string;
+  searchText: any;
 
   constructor(private feedsService: FeedsService) {}
 
