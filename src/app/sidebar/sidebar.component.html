@@ -29,7 +29,7 @@
                 (click)="delete(feed)">x</button>
       </li>
     </ul>
-    <div *ngIf="(activeFeeds | searchFeedName:searchText).length === 0">No results for your search</div>
+    <span *ngIf="(activeFeeds | searchFeedName:searchText).length === 0">No results for your search</span>
     <hr>
     <div class="add-container">
       <label for="feedName">Add a new feed</label>
