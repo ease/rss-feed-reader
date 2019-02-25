@@ -8,8 +8,9 @@ Application meets PWA standards (includes service workers...):
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-Run `ng build --prod` then go to /dist/rss-feed-reader and run `ng serve` to be able to test PWA functionality. Navigate to `http://localhost:4200/`.
 
+## Production build - Testing PWA
+Run `ng build --prod` then go to /dist/rss-feed-reader and run `ng serve` to be able to test PWA functionality. Navigate to `http://localhost:4200/`.
 
 ## Code scaffolding
 
