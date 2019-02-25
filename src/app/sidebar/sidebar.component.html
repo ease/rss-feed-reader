@@ -1,7 +1,7 @@
 <aside>
-  <div class="header">
+  <header class="header">
     <span>CONTENT GENERATOR</span>
-  </div>
+  </header>
   <!-- Sidebar -->
   <div class="sidebar"
        [ngClass]="{'active': active}">
@@ -35,9 +35,11 @@
       <input #feedName
              value="Testni Adweek"
              name="feedName"
+             aria-label="Type your feed name"
              placeholder="Type your feed name..." />
       <input #feedUrl
              value="https://www.adweek.com/feed/"
+             aria-label="Copy your RSS url"
              placeholder="Copy your RSS url..." />
     </div>
     <button (click)="add(feedName.value, feedUrl.value);"
@@ -51,9 +53,11 @@
       <input #feedName2
              value="BBC Tech"
              name="feedName2"
+             aria-label="Type your feed name"
              placeholder="Type your feed name..." />
       <input #feedUrl2
              value="http://feeds.bbci.co.uk/news/technology/rss.xml"
+             aria-label="Copy your RSS url"
              placeholder="Copy your RSS url..." />
     </div>
     <button (click)="add(feedName2.value, feedUrl2.value);"
