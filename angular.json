@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rss-feeder": {
+    "rss-feed-reader": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/rss-feeder",
+            "outputPath": "dist/rss-feed-reader",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "rss-feeder:build"
+            "browserTarget": "rss-feed-reader:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "rss-feeder:build:production"
+              "browserTarget": "rss-feed-reader:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rss-feeder:build"
+            "browserTarget": "rss-feed-reader:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         }
       }
     },
-    "rss-feeder-e2e": {
+    "rss-feed-reader-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +115,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "rss-feeder:serve"
+            "devServerTarget": "rss-feed-reader:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "rss-feeder:serve:production"
+              "devServerTarget": "rss-feed-reader:serve:production"
             }
           }
         },
@@ -135,5 +135,5 @@
       }
     }
   },
-  "defaultProject": "rss-feeder"
+  "defaultProject": "rss-feed-reader"
 }
