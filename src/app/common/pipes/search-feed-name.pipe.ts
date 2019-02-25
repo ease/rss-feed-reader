@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Feed } from './common/models/Feed';
+import { Feed } from '../models/Feed';
 
 @Pipe({
   name: 'searchFeedName'

@@ -9,7 +9,7 @@ import { FeedsComponent } from './feeds/feeds.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { SearchFeedNamePipe } from './search-feed-name.pipe';
+import { SearchFeedNamePipe } from './common/pipes/search-feed-name.pipe';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
