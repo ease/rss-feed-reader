@@ -18,14 +18,12 @@ export class FeedsComponent implements OnInit {
     this.feedsService.getAllFeeds$().subscribe((feeds: Feed[]) => {
       if (feeds) {
         this.feeds = feeds;
-        console.log('this.feeds:::', this.feeds);
       }
     });
 
     this.feedsService.getAllArticles$().subscribe((articles: Article[]) => {
       if (articles) {
         this.articles = articles;
-        console.log('this.articles:::', this.articles);
       }
     });
   }

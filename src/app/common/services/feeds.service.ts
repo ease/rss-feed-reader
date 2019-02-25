@@ -45,7 +45,7 @@ export class FeedsService {
           this.feedsResults.next(this.feeds);
           this.articleResults.next(this.articles);
         } else {
-          return feedsConst.clientErrors.feedExists;
+          return feedsConst.errorCodes.client.feedExists;
         }
 
         localStorage.setItem('feeds', JSON.stringify(this.feeds));

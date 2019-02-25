@@ -1,7 +1,7 @@
 @import '../common/styles/colors.scss';
 
 aside {
-  .header {
+  header {
     position: fixed;
     width: 100%;
     height: 60px;
@@ -107,7 +107,7 @@ aside {
 
 @media only screen and (min-width: 768px) {
   .dismiss,
-  .header {
+  header {
     display: none;
   }
   aside {
@@ -119,6 +119,11 @@ aside {
         display: none;
         opacity: 0;
       }
+    }
+  }
+  header {
+    span {
+      margin-left: 250px;
     }
   }
 }

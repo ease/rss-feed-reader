@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedsService } from '../common/services/feeds.service';
 import { Feed } from '../common/models/Feed';
+import { HttpErrorResponse } from '@angular/common/http';
+import { feedsConst } from '../common/constants/feeds.const';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +14,7 @@ export class SidebarComponent implements OnInit {
   submitted = false;
   active = false;
 
-  showAlreadyExist = false;
+  showWarning = false;
   warningMessage: string;
   searchText: any;
 
@@ -21,9 +23,9 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     if (localStorage.getItem('feeds')) {
       this.activeFeeds = JSON.parse(localStorage.getItem('feeds'));
-      this.activeFeeds.map((feed: Feed) =>{
+      this.activeFeeds.map((feed: Feed) => {
         this.add(undefined, feed.feed.url);
-      })
+      });
     }
     this.feedsService.getAllFeeds$().subscribe((feeds: Feed[]) => {
       if (feeds) {
@@ -37,15 +39,26 @@ export class SidebarComponent implements OnInit {
     if (!feedUrl) {
       return;
     }
-    this.feedsService.addFeed(feedUrl).subscribe(res => {
-      if (res && res.code === 1000) {
-        this.showAlreadyExist = true;
-        this.warningMessage = res.message && res.message;
-        setTimeout(() => {
-          this.showAlreadyExist = false;
-        }, 5000);
+    this.feedsService.addFeed(feedUrl).subscribe(
+      res => {
+        if (res && res.code === 1000) {
+          this.showWarning = true;
+          this.warningMessage = res.message && res.message;
+          setTimeout(() => {
+            this.showWarning = false;
+          }, 5000);
+        }
+      },
+      (error: HttpErrorResponse) => {
+        if (error.status === feedsConst.errorCodes.server.internalServer) {
+          this.showWarning = true;
+          this.warningMessage = error.error.message;
+          setTimeout(() => {
+            this.showWarning = false;
+          }, 5000);
+        }
       }
-    });
+    );
   }
 
   delete(feed: Feed) {
